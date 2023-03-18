@@ -7,9 +7,9 @@ app.permanent_session_lifetime = timedelta(days=5)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = 'lyantung0822@gmail.com'
-app.config['MAIL_PASSWORD'] = 'trdiluydmcstmuhu'
-app.config['MAIL_DEFAULT_SENDER'] = 'lyantung0822@gamil.com'
+app.config['MAIL_USERNAME'] = <MY EMAIL ADDRESS>
+app.config['MAIL_PASSWORD'] = <MY EMAIL PASSWORD>
+app.config['MAIL_DEFAULT_SENDER'] = <MY EMAIL ADDRESS>
 mail = Mail(app)
 
 @app.route("/")
@@ -38,7 +38,7 @@ def process_email():
         message = request.form["user_message"]
 
         # Email to notice me
-        msg = Message("Jess, %s left you a message!" % (user), sender='lyantung0822@gmail.com', recipients=['jesslam321@gmail.com'])
+        msg = Message("Jess, %s left you a message!" % (user), sender=<SENDER EMAIL>, recipients=[<RECIPIENTS EMAIL>])
         msg.body = """
         Hey Jess, looks like some left you a message on your website.
 
