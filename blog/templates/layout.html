@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link rel="icon" type="image/x-icon" href="{{ url_for("static", filename="img/head.png") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+    </head>
+    <body>
+        <nav class="wrapper">
+            <!-- Top menu -->
+            <div class="section">
+                <div class="top_navbar">
+                    <div class="logo">
+                        <a href="{{ url_for("home") }}"><p>Jess Lam</p></a>
+                    </div>
+                    <div class="function-buttons">
+                        <button id="language-switch"><img src="{{ url_for("static", filename="img/language.svg") }}"></button>
+                        <img src="{{ url_for("static", filename="img/light-mode.svg") }}" id="icon">
+                        <div class="hamburger">
+                            <a href="#">
+                                <span class="fas fa-bars">
+                                    <div class="bar1"></div>
+                                    <div class="bar2"></div>
+                                    <div class="bar3"></div>
+                                </span>
+                            </a>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="sidebar">
+                <!-- logo (top) -->
+                <div class="profile">
+                    <img src="{{ url_for("static", filename="img/logo.png") }}">
+                    <p>MSc Computing Student</p>
+                </div>
+                <!-- menu items (bottom) -->
+                <ul>
+                    <li><a href="{{ url_for("home") }}"><span class="item" lang="en">HOME</span> <span class="item" lang="zh">主頁</span></a></li>
+                    <li><a href="{{ url_for("about") }}"><span class="item" lang="en">ABOUT</span> <span class="item" lang="zh">關於我</span></a></li>
+                    <li><a href="{{ url_for("skills") }}"><span class="item" lang="en">SKILLS</span> <span class="item" lang="zh">我的技能</span></a></li>
+                    <li><a href="{{ url_for("contact") }}"><span class="item" lang="en">CONTACT</span> <span class="item" lang="zh">聯絡我</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+        <footer>
+            <p lang="en">Copyright &copy; 2023 Yan Tung Lam. All right reserved.</p>
+            <p lang="zh">版權所有 &copy; 2023 林恩彤</p>
+            <div class="social-media">
+                <button><a href="https://www.linkedin.com/in/jesslam822/"><img id="linkedin" src="{{ url_for("static", filename="img/linkedin.svg") }}"></a></button>
+                <button><a href="https://github.com/littlepinky822"><img id="github" src="{{ url_for("static", filename="img/github.svg") }}"></a></button>
+            </div>
+        </footer>
+        <script>
+            // To show side nav bar
+            var hamburger = document.querySelector(".hamburger");
+            hamburger.addEventListener("click", function(){
+            document.querySelector("body").classList.toggle("active");
+        })
+        </script>
+        <script>
+            // Turn on dark/light mode
+            var icon = document.getElementById("icon");
+            icon.addEventListener("click", function(){
+                document.body.classList.toggle("light-mode");
+                if (document.body.classList.contains("light-mode")) {
+                    localStorage.setItem("light-mode", this.onclick);
+                    icon.src = "{{ url_for('static', filename='img/dark-mode.svg') }}";
+                } else {
+                    localStorage.removeItem("light-mode", this.onclick);
+                    icon.src = "{{ url_for('static', filename='img/light-mode.svg') }}";
+                }
+            })
+
+            // Sync other pages if dark/light mode has been switched
+            if (localStorage.getItem("light-mode")) {
+                document.body.classList.add("light-mode");
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <script>
+            // Switch content between Traditional Chinese and English based on users' browser language
+            // reference 1: https://stackoverflow.com/questions/32008125/using-javascript-to-change-website-language
+            // reference 2: https://stackoverflow.com/questions/61652637/change-url-depending-on-browser-language
+
+            function langButtonListen() {
+                $('#language-switch').click(function() {
+                    $('[lang="zh"]').toggle();
+                    $('[lang="en"]').toggle();
+                    if ($('[lang="zh"]').is(":visible")) {
+                        localStorage.setItem("language-zh", "zh");
+                        if (localStorage.getItem("language-en")) {
+                            localStorage.removeItem("language-en");
+                        }
+                    } else {
+                        localStorage.setItem("language-en", "en");
+                        if (localStorage.getItem("language-zh")) {
+                            localStorage.removeItem("language-zh");
+                        }
+                    }
+                });
+            }
+
+            // Check if language preference already been made
+            if (localStorage.length > 0) {
+                if (localStorage.getItem("language-zh")) {
+                    $('[lang="en"]').hide();
+                    langButtonListen();
+                } else {
+                    $('[lang="zh"]').hide();
+                    langButtonListen();
+                }
+            } else {
+                // If user has no prefernece, detect language base on browser language
+                let lang = window.navigator.language.slice(0, 2);
+                if (lang === "zh") {
+                    $('[lang="en"]').hide();
+                    langButtonListen();
+                } else {
+                    $('[lang="zh"]').hide();
+                    langButtonListen();
+                }
+            }
+        </script>
+    </body>
+</html>
+
+
+<!-- Reference -->
+<!-- slide nav bar 1: https://dev.to/shantanu_jana/responsive-side-navigation-bar-in-html-css-and-javascript-3mgm -->
+<!-- slide nav bar 2: https://www.w3schools.com/howto/howto_js_sidenav.asp -->

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="{{ url_for("static", filename="img/head.png") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="firstpage.css") }}">
+        <title>JESS LAM</title>
+    </head>
+    <body>
+        <div class="content">
+            <img src="{{ url_for("static", filename="img/light-mode.svg") }}" id="icon">
+            <section id="name" class="section">
+                <div id="row1" class="separator">MSc Computing Student</div>
+                <p>Portfolio Of</p>
+                <h1>JESS LAM</h1>
+                <div id="row2" class="separator">UK Based</div>
+                <p class="arrow-wrapper"><a href=#menu><i class="arrow down"></i></a></p>
+            </section>
+            <section id="menu" class="section">
+                <p class="arrow-wrapper"><a href=#name><i class="arrow up"></i></a></p>
+                <ul class="nav-page">
+                    <li class="nav-page-item"><a href="{{ url_for("about") }}">ABOUT ME</a></li>
+                    <li class="nav-page-item"><a href="{{ url_for("skills") }}">MY SKILLS</a></li>
+                    <li class="nav-page-item"><a href="{{ url_for("contact") }}">CONTACT ME</a></li>
+                </ul>
+            </section>
+        </div>
+        <script>
+            var icon = document.getElementById("icon");
+            icon.addEventListener("click", function(){
+                document.body.classList.toggle("light-mode");
+                if (document.body.classList.contains("light-mode")) {
+                    localStorage.setItem("light-mode", this.onclick);
+                    icon.src = "{{ url_for('static', filename='img/dark-mode.svg') }}";
+                } else {
+                    localStorage.removeItem("light-mode", this.onclick);
+                    icon.src = "{{ url_for('static', filename='img/light-mode.svg') }}";
+                }
+            })
+
+            if (localStorage.getItem("light-mode")) {
+                document.body.classList.add("light-mode");
+            }
+        </script>
+    </body>
+</html>

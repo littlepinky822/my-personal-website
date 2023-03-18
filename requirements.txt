@@ -1,0 +1,14 @@
+click
+Flask
+Flask-WTF
+Flask-SQLAlchemy
+Flask-Mail
+greenlet
+itsdangerous
+Jinja2
+MarkupSafe
+SQLAlchemy
+Werkzeug
+WTForms
+gunicorn
+pymysql

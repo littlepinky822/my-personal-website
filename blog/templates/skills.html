@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}
+    SKILLS
+{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <img class="hero-bg" src="{{ url_for("static", filename="img/cardiff_bay.jpg") }}">
+        <h1 class="hero-text"><span lang="en">SKILLS</span> <span lang="zh">技能</span></h1>
+    </section>
+    <section class="content">
+        <h2><span lang="en">My expereinces:</span> <span lang="zh">我的經驗：</span></h2>
+        <p lang="en">Masters Degree in Computing (Currently pursuing)</p>
+        <p lang="zh">現於英國卡迪夫大學修讀電腦碩士課程</p>
+        <p lang="en">Bachelor Degree in Sociology</p>
+        <p lang="zh">曾於香港中文大學主修社會學學士課程</p>
+        <p lang="en">Minored in Journalism and Communication (Creative Media)</p>
+        <p lang="zh">副修新聞及傳播學學士課程</p>
+    
+        <h3><span lang="en">My Skills:</span> <span lang="zh">我的技能：</span></h3>
+        <p>HTML/CSS</p>
+        <p>JavaScript</p>
+        <p>Python</p>
+        <p>Java</p>
+        <p>MySQL</p>
+        <button class="cvbtn" type="submit" onclick="window.open('static/cv.pdf')">My CV</button>
+    </section>
+{% endblock %}

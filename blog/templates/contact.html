@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}
+    CONTACT ME
+{% endblock %}
+
+{% block content %}
+    <div class="contact-wrapper">
+        <div class="contact-photo">
+            <p lang="en">DON'T BE SHY</p>
+            <p lang="zh">不要害羞</p>
+            <img src="{{ url_for("static", filename="img/portrait.jpg") }}">
+            <p lang="en">SAY HI</p>
+            <p lang="zh">來打招呼吧</p>
+        </div>
+        <div class="contact-form">
+            <h1><span lang="en">Let's talk! Get in touch using the form below.</span> <span lang="zh">來聊天吧！</span></h1>
+            <form action="/send-contact" method="POST">
+                <ul>
+                    <li>
+                        <label for="name_field"><span lang="en">Name:</span> <span lang="zh">姓名：</span></label>
+                        <input type="text" id="name_field" name="user_name" />
+                    </li>
+                    <li>
+                        <label for="email_field"><span lang="en">Email:</span> <span lang="zh">電郵：</span></label>
+                        <input type="email" id="email_field" name="user_email" />
+                    </li>
+                    <li>
+                        <label for="msg_field"><span lang="en">Message:</span> <span lang="zh">訊息：</span></label>
+                        <textarea id="msg_field" name="user_message"></textarea>
+                    </li>
+                    <li class="button">
+                        <button type="submit"><span lang="en">Send message →</span> <span lang="zh">傳送 →</span></button>
+                    </li>
+                </ul>
+            </form>
+            <h2><span lang="en">Prefer other ways?</span> <span lang="zh">想用其他方法嗎？</span></h2>
+            <p><a href="mailto:jesslam321@gmail.com">jesslam321@gmail.com</a> / <a href="http://www.linkedin.com/in/jesslam822">LinkedIn</a></p>
+        </div>
+    </div>
+{% endblock %}
+
+
+<!-- Refernece -->
+<!-- Create contact form: https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form -->
+<!-- Sending form data: https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data -->

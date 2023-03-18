@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}
+    ABOUT
+{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <img class="hero-bg" src="{{ url_for("static", filename="img/hk_harbour.jpg") }}" alt="">
+        <h1 class="hero-text"><span lang="en">ABOUT ME</span> <span lang="zh">關於我</span></h1>
+    </section>
+    <section class="content">
+        <h2><span lang="en">Yan Tung Lam (Jess)</span> <span lang="zh">林恩彤</span></h2>
+        <p lang="en">Born in Hong Kong, now based in the United Kingdom.</p>
+        <p lang="zh">生於香港，現居於英國。</p>
+        <p lang="en">Currently an MSc Computing student at Cardiff University, majored in Sociology and minored in Communication and Journalism in Hong Kong.</p>
+        <p lang="zh">曾於香港中文大學主修社會學，並副修新聞及傳播學。現正在卡迪夫大學修讀電腦系碩士課程。</p>
+        <p lang="en">Interested in web development and design, but still exploring my future path.</p>
+        <p lang="zh">明白學海無涯，故仍在探索未來的路，希望每天都比昨天有進步。</p>
+        <p lang="en">Keep learning and never stop. Welcome to all opportunities around the UK.</p>
+        <p lang="zh">對網頁設計感興趣，希望能了解更多。歡迎來自英國的一切工作/學習機會。</p>
+        <h3><span lang="en">A little bit more about me...</span> <span lang="zh">不為人知的我</span></h3>
+        <p lang="en">(See if you can spot the secrect effects :p )</p>
+        <p lang="zh">（內有彩蛋）</p>
+        <ul>
+            <li lang="en">A coffee person</li>
+            <li lang="zh">血液中含有咖啡因</li>
+            <li lang="en">A <span class="hiddentxt">dog</span> lover (stalker)<span class="hiddenimg"><img src="{{ url_for("static", filename="img/coffee.png") }}"></span></li>
+            <li lang="zh">家中育有一隻<span class="hiddentxt">旺財</span><span class="hiddenimg"><img src="{{ url_for("static", filename="img/coffee.png") }}"></span></li>
+            <li lang="en">Addicted to <span class="duck">duck</span> videos on Instagram</li>
+            <li lang="zh">沉迷於Instagram上的<span class="duck">柯爾鴨</span>影片</li>
+            <li lang="en">Playing nonogram puzzles is my zen time</li>
+            <li lang="zh">近視因沉迷數織遊戲而加深</li>
+            <li lang="en">Trying hard to stick to my gym program</li>
+            <li lang="zh">努力健身（暫時有一塊腹肌）</li>
+        </ul>
+    </section>
+    <script>
+        // quack quack sound
+        var duck = document.getElementsByClassName("duck");
+        var audio = new Audio("static/duck.mp3");
+        for (var i = 0; i < duck.length; i++) {
+            duck[i].addEventListener("click", function(){
+            audio.play();
+            audio.currentTime = 0;
+            })
+        }
+    </script>
+{% endblock %}
