@@ -1,6 +1,10 @@
-# My Personal Website
+# My First Portfolio Website
 
-This is the source code for my personal website, which is a showcase of my work and accomplishments. The website is built using HTML, CSS, and JavaScript and is hosted on the Pythonanywhere platform. The website includes information about me, my skills, and my contact information.
+This is my first portfolio website, which is a showcase of my work and accomplishments. The website is built using HTML, CSS, Flask framework and a little bit of JavaScript. The website includes information about me, my skills, and my contact information.
+
+Nothing fancy here. But well... We all start somewhere, right?
+
+![HomePage](/blog/static/img/screenshot.png "Home Page")
 
 ## Get started
 
